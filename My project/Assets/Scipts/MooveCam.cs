@@ -2,16 +2,26 @@ using UnityEngine;
 
 public class MooveCam : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float sensitivity = 100f;
+    public float minAngle = 160f;   // limite gauche réelle
+    public float maxAngle = 200f;   // limite droite réelle
+
+    float currentY;
+
     void Start()
     {
-
-        
+        // angle de départ (par ex. 180)
+        currentY = transform.localEulerAngles.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // delta souris horizontal (ancien système)
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+
+        currentY += mouseX;
+        currentY = Mathf.Clamp(currentY, minAngle, maxAngle);
+
+        transform.localRotation = Quaternion.Euler(0f, currentY, 0f);
     }
 }
