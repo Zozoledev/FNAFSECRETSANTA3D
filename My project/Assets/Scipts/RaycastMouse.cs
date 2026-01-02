@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class RaycastMouse : MonoBehaviour
 {
     public LayerMask layerMask;
+    public GameObject rightdoor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +26,11 @@ public class RaycastMouse : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100, layerMask))
             {
                 Debug.Log("Hit object: " + hit.collider.gameObject.name);
+                if(hit.collider.gameObject.name == "ButtonClosedRight")
+                {
+                    MooveDoor doorScript = rightdoor.GetComponent<MooveDoor>();
+                    doorScript.Activate = true;
+                }
             }
         }
 

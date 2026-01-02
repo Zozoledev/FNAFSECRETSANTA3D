@@ -3435,7 +3435,7 @@ Transform:
   m_GameObject: {fileID: 2452462476485400616}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0.000000015805073, z: 0.000000005268358, w: 0.7071067}
-  m_LocalPosition: {x: 0.015316606, y: -0.0027564382, z: -0.006281433}
+  m_LocalPosition: {x: 0.015316606, y: 0, z: -0.00628}
   m_LocalScale: {x: 0.9999998, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9173,6 +9173,7 @@ GameObject:
   - component: {fileID: 904797765413058751}
   - component: {fileID: 2836251601596669757}
   - component: {fileID: 4709966938541070407}
+  - component: {fileID: 4709966938541070408}
   m_Layer: 0
   m_Name: Plane.004
   m_TagString: Untagged
@@ -16541,6 +16542,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4709966938541070408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2452462476485400616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8d9e56bf9923c4a90455b9a7760650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MooveDoor
+  Activate: 0
 --- !u!1 &4725469246665959767
 GameObject:
   m_ObjectHideFlags: 0
@@ -28563,7 +28577,7 @@ Transform:
   m_GameObject: {fileID: 1260396395234588455}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.015316606, y: 0.0027564382, z: 0.11937387}
+  m_LocalPosition: {x: -0.015316606, y: 0.00111, z: 0.11937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -29763,6 +29777,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  rightdoor: {fileID: 2452462476485400616}
 --- !u!114 &8816133747542149514
 MonoBehaviour:
   m_ObjectHideFlags: 0
