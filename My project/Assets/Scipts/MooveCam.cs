@@ -6,7 +6,7 @@ public class MooveCam : MonoBehaviour
     public float minAngle = 160f;   // limite gauche réelle
     public float maxAngle = 200f;   // limite droite réelle
 
-    float currentY;
+    private float currentY;
 
     void Start()
     {
