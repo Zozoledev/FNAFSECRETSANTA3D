@@ -5,10 +5,14 @@ public class RaycastMouse : MonoBehaviour
 {
     public LayerMask layerMask;
     public GameObject rightdoor;
+    public GameObject leftdoor;
+    public GameObject lightobjectright;
+    public Light lightright;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        lightright = lightobjectright.GetComponent<Light>();
+
     }
 
     // Update is called once per frame
@@ -30,6 +34,22 @@ public class RaycastMouse : MonoBehaviour
                 {
                     MooveDoor doorScript = rightdoor.GetComponent<MooveDoor>();
                     doorScript.Activate = true;
+                }
+                if(hit.collider.gameObject.name == "ButtonClosedLeft")
+                {
+                    MooveDoor doorScript = leftdoor.GetComponent<MooveDoor>();
+                    doorScript.Activate = true;
+                }
+                if(hit.collider.gameObject.name == "LightRight")
+                {
+                    if(lightright.enabled == true)
+                    {
+                        lightright.enabled = false;
+                    }   
+                    else
+                    {
+                        lightright.enabled = true;
+                    }
                 }
             }
         }

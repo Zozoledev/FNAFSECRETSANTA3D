@@ -5,7 +5,7 @@ public class MooveDoor : MonoBehaviour
     private bool isOpen = false;
     private Vector3 OpenPosition;
     private Vector3 ClosedPosition;
-    private float speed = 15f;
+    private float speed = 10f;
 
     public bool Activate;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,6 +14,8 @@ public class MooveDoor : MonoBehaviour
         OpenPosition = new Vector3(transform.position.x, 0f, transform.position.z);
         ClosedPosition = new Vector3(transform.position.x, 2f, transform.position.z);
         Activate = false;
+        isOpen = false;
+        transform.position = ClosedPosition;
 
     }
 
@@ -40,15 +42,20 @@ public class MooveDoor : MonoBehaviour
             }
         }
 
-        if(!isOpen && transform.position.y < 0f)
+        if (!Activate)
         {
-            transform.position = ClosedPosition;
-        }
+            if (!isOpen && transform.position.y < 0f)
+            {
+                transform.position = ClosedPosition;
+            }
 
-        if(isOpen && transform.position.y > 2f)
-        {
-            transform.position = OpenPosition;
+            if (isOpen && transform.position.y > 2f)
+            {
+                transform.position = OpenPosition;
+            }
+
         }
+       
 
 
 
