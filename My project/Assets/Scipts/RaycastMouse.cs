@@ -6,12 +6,26 @@ public class RaycastMouse : MonoBehaviour
     public LayerMask layerMask;
     public GameObject rightdoor;
     public GameObject leftdoor;
-    public GameObject lightobjectright;
-    public Light lightright;
+
+
+    //LUMIERE DROITE VARIABLES
+    private float timerright;
+    private bool activatedright;
+    public UnityEngine.Light lightright;
+
+    //LUMIERE GAUCHE VARIABLES
+    private float timerleft;
+    private bool activatedleft;
+    public UnityEngine.Light lightleft;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lightright = lightobjectright.GetComponent<Light>();
+        timerright = 0f;
+        activatedright = false;
+
+        timerleft = 0f;
+        activatedleft = false;
 
     }
 
@@ -42,16 +56,60 @@ public class RaycastMouse : MonoBehaviour
                 }
                 if(hit.collider.gameObject.name == "LightRight")
                 {
-                    if(lightright.enabled == true)
-                    {
-                        lightright.enabled = false;
-                    }   
-                    else
-                    {
-                        lightright.enabled = true;
-                    }
+                    activatedright = !activatedright;
+                    
+                }
+                if(hit.collider.gameObject.name == "LightLeft")
+                {
+                    activatedleft = !activatedleft;
+
                 }
             }
+        }
+
+        if (activatedright)
+        {
+            timerright += Time.deltaTime;
+            Debug.Log("Timer Right: " + timerright);
+            if (timerright <= Random.Range(0f, 1f))
+            {
+                lightright.enabled = true;
+            }
+            else
+            {
+                lightright.enabled = false;
+            }
+            if (timerright >= Random.Range(0f, 1f))
+            {
+                timerright = 0f;
+            }
+        }
+        else
+        {
+            lightright.enabled = false;
+
+        }
+
+        if (activatedleft)
+        {
+            timerleft += Time.deltaTime;
+            Debug.Log("Timer Left: " + timerleft);
+            if (timerleft <= Random.Range(0f, 1f))
+            {
+                lightleft.enabled = true;
+            }
+            else
+            {
+                lightleft.enabled = false;
+            }
+            if (timerleft >= Random.Range(0f, 1f))
+            {
+                timerleft = 0f;
+            }
+        }
+        else
+        {
+            lightleft.enabled = false;
         }
 
     }
